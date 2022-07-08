@@ -27,3 +27,8 @@ class BasePage:
         except TimeoutException:
             return True
         return False
+    
+    def remove_footer(self):
+        self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
+        
+        

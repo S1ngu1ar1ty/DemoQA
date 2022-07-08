@@ -1,7 +1,7 @@
 from selenium.common.exceptions import *
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+import time
 
 class BasePage:
     
@@ -31,4 +31,7 @@ class BasePage:
     def remove_footer(self):
         self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
         
-        
+    def click_btn(self, how, what):
+        btn = self.driver.find_element(how, what)
+        self.driver.execute_script("arguments[0].click();", btn)
+        time.sleep(10)

@@ -1,6 +1,8 @@
 from .base_page import BasePage
 from helpers.locators import *
 import pytest
+from data.data import student
+import time
 
 
 class FormPage(BasePage):
@@ -17,3 +19,14 @@ class FormPage(BasePage):
         
     def validation_empty_required_fields(self):
         self.click_btn(*FormPageLocators.SUBMIT_BTN)
+        
+    def required_fields(self):
+        
+        self.is_element_visible(*FormPageLocators.FIRST_NAME).send_keys(student.first_name)
+        self.is_element_visible(*FormPageLocators.LAST_NAME).send_keys(student.last_name)
+        self.is_element_visible(*FormPageLocators.EMAIL).send_keys(student.email)
+        self.click_btn(*FormPageLocators.GENDER)
+        self.is_element_visible(*FormPageLocators.MOBILE).send_keys(student.number)
+        self.click_btn(*FormPageLocators.SUBMIT_BTN)
+        time.sleep(10)
+        

@@ -1,7 +1,7 @@
 from selenium.common.exceptions import *
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import time
+
 
 class BasePage:
     
@@ -14,19 +14,23 @@ class BasePage:
     def open(self):
         self.driver.get(self.url)
         
-    def is_element_present(self, how, what):
-        try:
-            self.driver.find_element(how, what)
-        except (NoSuchElementException):
-            return False
-        return True
+    # def is_element_present(self, how, what):
+    #     try:
+    #         self.driver.find_element(how, what)
+    #     except (NoSuchElementException):
+    #         return False
+    #     return True
+    
+    # def is_element_visible(self, how, what, timeout=10):
+    #     try:
+    #         WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located((how, what)))
+    #     except TimeoutException:
+    #         return True
+    #     return False
     
     def is_element_visible(self, how, what, timeout=10):
-        try:
-            WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located((how, what)))
-        except TimeoutException:
-            return True
-        return False
+        return WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located((how, what)))
+        
     
     def remove_footer(self):
         self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
@@ -34,4 +38,3 @@ class BasePage:
     def click_btn(self, how, what):
         btn = self.driver.find_element(how, what)
         self.driver.execute_script("arguments[0].click();", btn)
-        time.sleep(10)

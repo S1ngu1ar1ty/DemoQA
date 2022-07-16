@@ -30,6 +30,9 @@ class BasePage:
     
     def is_element_visible(self, how, what, timeout=10):
         return WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located((how, what)))
+    
+    def is_elements_visible(self, how, what, timeout=10):
+        return WebDriverWait(self.driver, timeout).until(EC.visibility_of_all_elements_located((how, what)))
         
     
     def remove_footer(self):

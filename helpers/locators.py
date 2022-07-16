@@ -9,6 +9,7 @@ class FormPageLocators:
     EMAIL = (By.CSS_SELECTOR, '#userEmail')
     GENDER = (By.CSS_SELECTOR, f'label[for="gender-radio-{randint(1,3)}"]')
     MOBILE = (By.CSS_SELECTOR, '#userNumber')
+    DATE_OF_BIRTH = (By.CSS_SELECTOR, '#dateOfBirthInput')
     SUBJECTS = (By.CSS_SELECTOR, '.css-1hwfws3')
     HOBBIES = (By.CSS_SELECTOR, f'label[for="hobbies-checkbox-{randint(1,3)}"]')
     ADDRESS = (By.CSS_SELECTOR, '#currentAddress')

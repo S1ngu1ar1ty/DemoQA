@@ -30,5 +30,6 @@ class FormPage(BasePage):
         
         # known bug TypeError: Cannot read properties of null (reading 'getMonth')
         # self.is_element_visible(*FormPageLocators.DATE_OF_BIRTH).clear()
-        # self.is_element_visible(*FormPageLocators.DATE_OF_BIRTH).send_keys('20.01.1978')
+        # self.is_element_visible(*FormPageLocators.DATE_OF_BIRTH).send_keys(student.date)
+        
         self.click_btn(*FormPageLocators.SUBMIT_BTN)
